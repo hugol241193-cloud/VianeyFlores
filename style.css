@@ -1,0 +1,87 @@
+@charset "utf-8";
+:root {
+    --yellow: #ffdf00;
+    --dark-garden: radial-gradient(circle at center, #1a2f1a 0%, #0a0a0a 100%); /* Fondo jardín de noche */
+    --soft-white: rgba(255, 255, 255, 0.85);
+}
+
+body {
+    margin: 0;
+    /* Aplicamos el fondo degradado */
+    background: var(--dark-garden);
+    height: 100vh;
+    color: var(--soft-white);
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.5s ease; /* Para el efecto JS */
+}
+
+/* El contenedor principal */
+.container {
+    text-align: center;
+    z-index: 10;
+    position: relative;
+}
+
+/* Su nombre con el glow */
+.name-glow {
+    font-size: 5rem;
+    font-weight: 800;
+    background: linear-gradient(to bottom, #fff700, #ffba00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(255, 223, 0, 0.6));
+    margin: 0;
+    letter-spacing: -3px;
+    cursor: default;
+    transition: transform 0.3s ease, filter 0.3s ease; /* Para el efecto JS */
+}
+
+/* La línea divisoria */
+.divider {
+    width: 80px;
+    height: 4px;
+    background: var(--yellow);
+    margin: 20px auto;
+    border-radius: 2px;
+}
+
+/* El texto aesthetic */
+p {
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    line-height: 1.8;
+}
+
+/* Icono de la garrita */
+.garrita-icon {
+    margin-top: 30px;
+    font-size: 1.8rem;
+    filter: drop-shadow(0 0 10px var(--yellow));
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.8; }
+}
+
+/* Estilos para las flores/partículas que caen (JS) */
+.particle {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(105vh) rotate(360deg);
+    }
+}
